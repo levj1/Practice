@@ -86,7 +86,7 @@ namespace ReadingCSVfiles
                                 cmd.Connection = conn;
                                 SqlParameter param = null;
 
-                                cmd.CommandText = string.Format("insert into fcbinterface..returnimage (txtIPAddress,imgImage, txtFileName,txtCheckNo,mnyAmount,txtReason,txtCode,txtBank,dteFileDate) values('1.1.1.1',@Data, '{0}','{1}',{2}, '{3}', '{4}', '{5}',{6})",
+                                cmd.CommandText = string.Format("insert into table (txtIPAddress,imgImage) values('1.1.1.1',@Data)",
                                 sqlStr(csvFileName), sqlStr(csvCheckNo), amount, sqlStr(csvReason), sqlStr(csvReturnCode), sqlStr(txtBank), dteFileDate);
                                 param = new SqlParameter("@Data", SqlDbType.VarBinary, fileContents.Length, ParameterDirection.Input, true, 0, 0, null, DataRowVersion.Current, fileContents);
                                 cmd.Parameters.Add(param);
