@@ -29,15 +29,16 @@ namespace ReadingCSVfiles
 
         private void ParseReturnCSVCheckInfo()
         {
-            string returnpathTest = @"C:\Users\James Leveille\Desktop\CitywideReturns";
-            string csvPath = returnpathTest + "\\2016 0804 RetChk sample.csv";
+            string returnImagePath = @"C:\Users\James Leveille\Desktop\CitywideReturns\";
 
-            foreach (string fileName in Directory.GetFiles(returnpathTest, "*.csv")) 
+            foreach (string fileName in Directory.GetFiles(returnImagePath, "*.csv")) 
             {
 
                 using (SqlConnection conn = new SqlConnection())
                 using (SqlCommand cmd = new SqlCommand())
                 {
+                    cmd.CommandTimeout = 1200;
+                    cmd.Connection = conn;
                     using (StreamReader reader = new StreamReader(fileName))
                     {
                         for (int i = 0; !reader.EndOfStream; i++)
@@ -54,9 +55,9 @@ namespace ReadingCSVfiles
                             if (i == 0)
                                 continue;
 
-                            // The fields 
+                            // The fields in csv file
                             // CIFNO	CFNA1	STATUS	EHTDATE6	EHACCTN	EHACTYP	EHSEQNO	EHAMT	EHRCODE	ERDESC	EHDESC	EHCHKNO	EHIMAGE#	EHPAYOR
-                            
+
                             string csvMoneyAmount = Fields[7];
                             decimal amount = Convert.ToDecimal(csvMoneyAmount);
                             string csvReturnCode = Fields[8];
@@ -64,6 +65,10 @@ namespace ReadingCSVfiles
                             string csvDescription = Fields[10];
                             string csvCheckNo = Fields[11];
                             string csvFileName = Fields[12] + ".tif";
+                            string txtBank = "CWB";
+
+                            FileInfo fi = new FileInfo(fileName);
+                            string dteFileDate = (fi.CreationTime).ToString(@"MM\/dd\/yyyy HH:mm:ss");
 
                             if (!string.IsNullOrEmpty(csvDescription))
                             {
@@ -72,7 +77,7 @@ namespace ReadingCSVfiles
 
                             try
                             {
-                                BinaryReader br = new BinaryReader(File.Open(returnpathTest + @"\" + csvFileName, FileMode.Open));
+                                BinaryReader br = new BinaryReader(File.Open(returnImagePath + @"\" + csvFileName, FileMode.Open));
 
                                 byte[] fileContents = new byte[br.BaseStream.Length];
                                 br.Read(fileContents, 0, (int)br.BaseStream.Length);
@@ -81,11 +86,11 @@ namespace ReadingCSVfiles
                                 cmd.Connection = conn;
                                 SqlParameter param = null;
 
-                                cmd.CommandText = string.Format("insert into TableName (colName1, colName2, colName3) values('{0}',@Data, '{1}')",
-                                    csvFileName, csvCheckNo, amount, csvReason);
+                                cmd.CommandText = string.Format("insert into fcbinterface..returnimage (txtIPAddress,imgImage, txtFileName,txtCheckNo,mnyAmount,txtReason,txtCode,txtBank,dteFileDate) values('1.1.1.1',@Data, '{0}','{1}',{2}, '{3}', '{4}', '{5}',{6})",
+                                sqlStr(csvFileName), sqlStr(csvCheckNo), amount, sqlStr(csvReason), sqlStr(csvReturnCode), sqlStr(txtBank), dteFileDate);
                                 param = new SqlParameter("@Data", SqlDbType.VarBinary, fileContents.Length, ParameterDirection.Input, true, 0, 0, null, DataRowVersion.Current, fileContents);
-                                MessageBox.Show(cmd.CommandText); 
                                 cmd.Parameters.Add(param);
+                                MessageBox.Show(cmd.CommandText);
                                 //cmd.ExecuteNonQuery();
                                 cmd.Parameters.Clear();
                                 param = null;
@@ -103,6 +108,13 @@ namespace ReadingCSVfiles
             }
         }
 
+        private object sqlStr(string phrase)
+        {
+            phrase = phrase.Replace("\"", string.Empty);
+            phrase = phrase.Replace("'", string.Empty);
+
+            return phrase;
+        }
 
         public string[] ParseFields(string sBuf)
         {
