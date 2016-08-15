@@ -20,9 +20,19 @@ namespace FileDirectoryDemo
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+            DirectoryInfo dir = new DirectoryInfo(@"C:\TestFiles\");
+            MessageBox.Show(dir.Name);
+
+
+            
+
+        }
+
+        private void DirectoryInfoMeth()
+        {
             DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory().ToString());
-
-
+            
             StringBuilder sb = new StringBuilder();
 
             sb.Append("Directory name: " + dir.Name);
@@ -35,16 +45,11 @@ namespace FileDirectoryDemo
             sb.Append(Environment.NewLine);
             sb.Append("Directory Parent: " + dir.Parent);
             sb.Append(Environment.NewLine);
-            
+
 
             string output = sb.ToString();
 
             MessageBox.Show(output);
-
-
-
-
-
         }
     }
 }

@@ -17,28 +17,23 @@ namespace ReadingCSVfiles
         private void Form1_Load(object sender, EventArgs e)
         {
             ParseReturnCSVCheckInfo();
-
-            //string returnpathTest = @"C:\Users\James Leveille\Desktop\CitywideReturns";
-            //string csvPath = returnpathTest + "\\2016 0804 RetChk sample.csv";
-
-            //foreach (string fileName in Directory.GetFiles(returnpathTest, "*.csv"))
-            //{
-            //    MessageBox.Show(fileName);
-            //}
         }
 
         private void ParseReturnCSVCheckInfo()
         {
+            int ifacetypeid = 66;
+
             string returnImagePath = @"C:\Users\James Leveille\Desktop\CitywideReturns\";
 
             foreach (string fileName in Directory.GetFiles(returnImagePath, "*.csv")) 
             {
-
-                using (SqlConnection conn = new SqlConnection())
+                string cs = "Server ={cincdb3}; Database ={ 1}; UID = CincUser; PWD = 0tat0pay$A";
+                using (SqlConnection conn = new SqlConnection(cs))
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.CommandTimeout = 1200;
                     cmd.Connection = conn;
+
                     using (StreamReader reader = new StreamReader(fileName))
                     {
                         for (int i = 0; !reader.EndOfStream; i++)
@@ -66,6 +61,8 @@ namespace ReadingCSVfiles
                             string csvCheckNo = Fields[11];
                             string csvFileName = Fields[12] + ".tif";
                             string txtBank = "CWB";
+                            
+
 
                             FileInfo fi = new FileInfo(fileName);
                             string dteFileDate = (fi.CreationTime).ToString(@"MM\/dd\/yyyy HH:mm:ss");
@@ -82,11 +79,10 @@ namespace ReadingCSVfiles
                                 byte[] fileContents = new byte[br.BaseStream.Length];
                                 br.Read(fileContents, 0, (int)br.BaseStream.Length);
                                 br.Close();
-                                cmd.CommandTimeout = 1200;
-                                cmd.Connection = conn;
                                 SqlParameter param = null;
+                                
 
-                                cmd.CommandText = string.Format("insert into table (txtIPAddress,imgImage) values('1.1.1.1',@Data)",
+                                cmd.CommandText = string.Format("insert into fcbinterface..returnimage (txtIPAddress,imgImage, txtFileName,txtCheckNo,mnyAmount,txtReason,txtCode,txtBank,dteFileDate) values('1.1.1.1',@Data, '{0}','{1}',{2}, '{3}', '{4}', '{5}',{6})",
                                 sqlStr(csvFileName), sqlStr(csvCheckNo), amount, sqlStr(csvReason), sqlStr(csvReturnCode), sqlStr(txtBank), dteFileDate);
                                 param = new SqlParameter("@Data", SqlDbType.VarBinary, fileContents.Length, ParameterDirection.Input, true, 0, 0, null, DataRowVersion.Current, fileContents);
                                 cmd.Parameters.Add(param);
