@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace NinjaDomain.Classes
@@ -16,7 +12,7 @@ namespace NinjaDomain.Classes
         public Clan Clan { get; set; }
         public int ClanId { get; set; }
         public List<NinjaEquipment> EquipmentOwned { get; set; }
-
+        public DateTime DateOfBirth { get; set; }
     }
 
     public class Clan
