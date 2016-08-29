@@ -9,30 +9,23 @@ using Newtonsoft.Json;
 namespace APIDemo
 {
 
-    class Product
-    {
-        public string BookName { get; set; }
-        public string Chapter { get; set; }
-        public string Text { get; set; }
-    }
-
     class Program
-    {
-       
+    {        
+        static string _password = "mamajames1226";
+        static string _token = "hCqGoQYlBorqkIyQnjpMSlqzx1Q1YEAUZaJMCrXN";
+        static string _address = @"https://bibles.org/v2/eng-KJVA/passages.js?q[]=john+3%3A1-5";
         static void Main(string[] args)
         {
-            Runapifail();
+            Run();
 
             Console.ReadLine();
 
         }
 
-
-
         static async void Runapifail()
         {
             Rootobject rootobj = null;
-
+            
             using (var client = new HttpClient())
             {
                 var byteArray = Encoding.ASCII.GetBytes(string.Format("{0}:{1}", _token, _password));
@@ -58,34 +51,34 @@ namespace APIDemo
         // This one works fine.
         static async Task Run()
         {
+            Rootobject rootObj = null;
+
+            string address = String.Format("https://bibles.org/v2/passages.xml?q[]=john+3:1-5&version=eng-KJVA");
+
+
             using (var client = new HttpClient())
             {
+                client.BaseAddress = new Uri(address);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", _token, _password)));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", credentials);
 
-                //string uriToken = "hCqGoQYlBorqkIyQnjpMSlqzx1Q1YEAUZaJMCrXN";
-                //var credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}", "jameslevj@gmail.com", "mamajames1226")));
-
-                var uri = new Uri("https://bible-api.com/john 3:5");
-
-                //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", credentials);
-        
-
-                var response = await client.GetAsync(uri);
-                string textResult = await response.Content.ReadAsStringAsync();
-
-                JObject joResponse = JObject.Parse(textResult);
-                JArray array = (JArray)joResponse["verses"];
-                Console.WriteLine(array[0]["text"]);
-                foreach (var item in array)
+                HttpResponseMessage response = await client.GetAsync(_address);
+                if(response.IsSuccessStatusCode)
                 {
-                    Console.WriteLine(item.ToString());
+                    Console.WriteLine();
+                    var result = await response.Content.ReadAsStringAsync();
+                    rootObj = JsonConvert.DeserializeObject<Rootobject>(result);
+                }
+
+                foreach (var item in rootObj.response.search.result.passages)
+                {
+                    Console.WriteLine(item.text);
                 }
             }
         }
 
-
-        static string _address = @"https://bibles.org/v2/eng-KJVA/passages.js?q[]=john+3%3A1-5";
-        static string _password = "mamajames1226";
-        static string _token = "hCqGoQYlBorqkIyQnjpMSlqzx1Q1YEAUZaJMCrXN";
 
        
     }
@@ -93,5 +86,8 @@ namespace APIDemo
 }
 
 
-    
-  
+
+//var credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}", "jameslevj@gmail.com", "mamajames1226")));
+//client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", credentials);
+//JObject joResponse = JObject.Parse(textResult);
+//JArray array = (JArray)joResponse["verses"];

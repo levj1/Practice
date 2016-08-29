@@ -6,6 +6,7 @@
 
 <h2>Index</h2>
 
+@Html.Raw(@Model.response.search.result.passages[0].text)
 
 @using (Html.BeginForm()) 
 {
@@ -14,11 +15,10 @@
     <div class="form-horizontal">
         <h4>Today's reading: </h4>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-           @Model.response.search.result.passages[0].text
-        </div>
-    </div>
+
+         @Html.TextAreaFor(m => @Html.Raw(m.response.search.result.passages[0].text), new { @class = "form-control" })  
+
+     </div>
 }
 
 

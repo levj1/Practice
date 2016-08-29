@@ -8,34 +8,45 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using static MvcApp.Models.JsonObject.Rootobject;
 
 namespace MvcApp.Controllers
 {
+  
     public class ReadingJsonController : Controller
     {
-        static string _address = @"https://bibles.org/v2/eng-KJVA/passages.js?q[]=john+3%3A1-5";
-        static string _password = "mamajames1226";
-        static string _token = "hCqGoQYlBorqkIyQnjpMSlqzx1Q1YEAUZaJMCrXN";
-        
+        //static string address = "https://bibles.org/v2/passages.js?q[]=john+3:1-5&version=eng-KJVA/";
+        static string address = @"https://bibles.org/v2/eng-KJVA/passages.js?q[]=john+3%3A1-5";
+        static string ApiToken = GetAppSetting("token");
+        static string ApiPassword = GetAppSetting("apiPassword");
+
         // GET: ReadingJson
         public async Task<ActionResult> Index()
         {
-            Rootobject rootobj = null;
+            Rootobject rootObj = null;
 
             using (var client = new HttpClient())
             {
-                var byteArray = Encoding.ASCII.GetBytes(string.Format("{0}:{1}", _token, _password));
-                var header = new AuthenticationHeaderValue(
-                           "Basic", Convert.ToBase64String(byteArray));
-                client.DefaultRequestHeaders.Authorization = header;
+                client.BaseAddress = new Uri(address);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", ApiToken, ApiPassword)));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", credentials);
 
-                var result = await client.GetAsync(_address);
-                string textResult = await result.Content.ReadAsStringAsync();
-                rootobj = JsonConvert.DeserializeObject<Rootobject>(textResult);
-                
-                return View(rootobj);
+                HttpResponseMessage response = await client.GetAsync(address);
+                if (response.IsSuccessStatusCode)
+                {
+                    var result = await response.Content.ReadAsStringAsync();
+                    rootObj = JsonConvert.DeserializeObject<Rootobject>(result);
+                }
+
+                return View(rootObj);
             }
+
+        }
+
+        public static string GetAppSetting(string appSetting)
+        {
+            return System.Configuration.ConfigurationManager.AppSettings[appSetting];
         }
 
         // GET: ReadingJson/Details/5
