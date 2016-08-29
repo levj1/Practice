@@ -14,6 +14,7 @@ namespace MvcApp.Controllers
   
     public class ReadingJsonController : Controller
     {
+       
         //static string address = "https://bibles.org/v2/passages.js?q[]=john+3:1-5&version=eng-KJVA/";
         static string address = @"https://bibles.org/v2/eng-KJVA/passages.js?q[]=john+3%3A1-5";
         static string ApiToken = GetAppSetting("token");

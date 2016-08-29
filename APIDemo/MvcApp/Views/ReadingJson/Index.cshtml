@@ -6,17 +6,22 @@
 
 <h2>Index</h2>
 
-@Html.Raw(@Model.response.search.result.passages[0].text)
-
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Today's reading: </h4>
+        <h4>Today's reading: @Html.Raw(@Model.response.search.result.passages[0].display)</h4>
         <hr />
 
-         @Html.TextAreaFor(m => @Html.Raw(m.response.search.result.passages[0].text), new { @class = "form-control" })  
+        <div>
+            @Html.Raw(@Model.response.search.result.passages[0].text)
+            @Html.Raw(@Model.response.search.result.passages[0].copyright)
+        </div>
+        <div>
+
+        </div>
+        
 
      </div>
 }
