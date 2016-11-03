@@ -11,6 +11,11 @@ namespace BibRead.BL
         public string UserName { get; set; }
         public string Password { get; set; }
 
+        public Login()
+        {
+
+        }
+
         public Login(string usern, string pass)
         {
             UserName = usern;
@@ -20,7 +25,8 @@ namespace BibRead.BL
         public bool CanLogIn()
         {
             bool output = false;
-            
+            if (UserName == "james" && Password == "pass")
+                output = true;
 
             return output;
         }
