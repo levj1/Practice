@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AppImplementation;
+using AppInterface;
+using AppModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,26 +13,18 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            string[] names = { "Kendall", "Woodeline", "Guy Eddy", "James", "Nathalie", "Danielle",
-                "Eddyte", "Rodney", "Kelly", "Andy"};
+            IUser repository = new UserImplemenation();
 
-            var nameList = new List<string>();
-            nameList.AddRange(names);
-            Console.WriteLine("list in unsorted order: ");
-            foreach (var name in nameList)
+            //List All Departments
+            List<Users> usersList = repository.SelectAll().ToList();
+            foreach (var user in usersList)
             {
-                Console.WriteLine("{0}", name);
+                Console.WriteLine(user.UserName);
             }
 
-            nameList.Sort();
-
-            Console.WriteLine("list in sorted order: ");
-            foreach (var name in nameList)
-            {
-                Console.WriteLine("{0}", name);
-            }
-
+            Console.WriteLine("Press any key to exit...");
             Console.ReadLine();
+            
         }
     }
 }

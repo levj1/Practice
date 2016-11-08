@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook", "CookBook\CookBook.csproj", "{73775565-4DD9-43AF-8FF0-327B7EBEC19A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Model", "CookBook\App.Model.csproj", "{73775565-4DD9-43AF-8FF0-327B7EBEC19A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{0AE8D285-C0AF-485B-8FF5-5734E3CBCD12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppInterface", "AppInterface\AppInterface.csproj", "{D5ED75C1-76E4-4DC2-A3CA-348DCCC89D05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppImplementation", "AppImplementation\AppImplementation.csproj", "{85613AFD-1F8B-4E9E-8A12-40BCF8D1FA49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{0AE8D285-C0AF-485B-8FF5-5734E3CBCD12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AE8D285-C0AF-485B-8FF5-5734E3CBCD12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AE8D285-C0AF-485B-8FF5-5734E3CBCD12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5ED75C1-76E4-4DC2-A3CA-348DCCC89D05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5ED75C1-76E4-4DC2-A3CA-348DCCC89D05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5ED75C1-76E4-4DC2-A3CA-348DCCC89D05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5ED75C1-76E4-4DC2-A3CA-348DCCC89D05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85613AFD-1F8B-4E9E-8A12-40BCF8D1FA49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85613AFD-1F8B-4E9E-8A12-40BCF8D1FA49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85613AFD-1F8B-4E9E-8A12-40BCF8D1FA49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85613AFD-1F8B-4E9E-8A12-40BCF8D1FA49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
