@@ -10,9 +10,21 @@ namespace CF.BL
     {
         public int ID { get; private set; }
         public string FirstName { get; set; }
+        public string MiddleName { get; set; }
         public string LastName { get; set; }
+        public string Email { get; set; }
+        public int Age { get; set; }
+        public Address Address { get; set; }
 
-        public string Email { get; set; } 
+        public Person() { }
+        public Person(string fname, string mname, string lname, Address address)
+        {
+            FirstName = fname;
+            MiddleName = mname;
+            LastName = lname;
+            Address = address;
+        }
+        public Person(string fname, string mname, string lname) : this(fname, mname, lname, null) { }
 
         public string FullName
         {
@@ -35,5 +47,24 @@ namespace CF.BL
             }
         }
 
+    }
+
+    public class Parent: Person
+    {
+        public List<Person> Children { get; set; }
+        public Parent()
+        {
+            Children = new List<Person>();
+        }
+    }
+
+    enum PersonRelationship
+    {
+        Father,
+        Mother,
+        Son,
+        Daughter,
+        Wife,
+        Husband
     }
 }
