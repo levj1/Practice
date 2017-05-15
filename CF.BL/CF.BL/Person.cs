@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace CF.BL
 {
+    public enum Gender
+    {
+        Male,
+        Female
+    }
     public class Person
     {
         public int ID { get; private set; }
@@ -14,6 +19,7 @@ namespace CF.BL
         public string LastName { get; set; }
         public string Email { get; set; }
         public int Age { get; set; }
+        public Gender Gender { get; set; }
         public Address Address { get; set; }
 
         public Person() { }
@@ -51,20 +57,15 @@ namespace CF.BL
 
     public class Parent: Person
     {
-        public List<Person> Children { get; set; }
+        public List<Kid> Children { get; set; }
         public Parent()
         {
-            Children = new List<Person>();
+            Children = new List<Kid>();
         }
     }
 
-    enum PersonRelationship
+   public class Kid: Person
     {
-        Father,
-        Mother,
-        Son,
-        Daughter,
-        Wife,
-        Husband
+
     }
 }

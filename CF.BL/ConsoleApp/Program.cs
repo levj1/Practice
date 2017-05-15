@@ -16,15 +16,7 @@ namespace ConsoleApp
                 FirstName = "Rony",
                 Children =
                 {
-                    new Person {FirstName = "Kendall" },
-                    new Person {FirstName = "Guy" },
-                    new Person {FirstName = "James" },
-                    new Parent {
-                        FirstName = "Nathy",
-                        Children = {
-                            new Person { FirstName = "Abbie" }
-                        }
-                    }
+                    new Kid {FirstName = "Kendall" }
                 }
             };
 
@@ -38,9 +30,7 @@ namespace ConsoleApp
             foreach (var children in parent.Children)
             {
                 Console.WriteLine(children.FirstName);
-                if (children is Parent)
-                {
-                }
+                
             }
         }
     }
