@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common;
 
 namespace ConsoleApp
 {
@@ -11,16 +12,12 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            Parent rony = new Parent()
+            for (int i = 2; i < 30; i++)
             {
-                FirstName = "Rony",
-                Children =
-                {
-                    new Kid {FirstName = "Kendall" }
-                }
-            };
-
-            PrintNameOfParentAndChildren(rony);
+                if(Util.IsPrimeNumber(i))
+                    Console.WriteLine(i);
+            }
+            
 
             Console.ReadLine();
         }
