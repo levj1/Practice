@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace DeitelBookApp
@@ -10,11 +11,66 @@ namespace DeitelBookApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(GenerateParkingCharge(23));
+            // read file
+
+            // If add number if not in loop 
+            string path = @"C:\Users\James Leveille\Documents\GitHub\Practice\DeitelBookApp\numTransID.txt";
+            string newPath = @"C:\Users\James Leveille\Documents\GitHub\Practice\DeitelBookApp\NEW.txt";
+
+            if(File.Exists(newPath))
+                File.Delete(newPath);
+
+            if(!File.Exists(newPath)){
+                File.Create(newPath);
+            }
+
+            StringBuilder sb = new StringBuilder();
+            List<string> listTran = new List<string>();
+            using (StreamReader reader = new StreamReader(path))
+            {
+                string line;
+                string oldTransid = "0";
+                while ((line = reader.ReadLine()) != null)
+                {
+                    foreach (var transId in line.Split(','))
+                    {
+                        if (transId != oldTransid)
+                        {
+                            listTran.Add(transId);
+                            sb.Append(transId);
+                            sb.Append(",");
+                        }
+                    }
+                }
+            }
+
+            File.WriteAllLines(newPath, listTran.ToArray());
+            // add to new file
+            //using (StreamWriter sWriter = new StreamWriter(newPath))
+            //{
+            //    sWriter.Write(sb.ToString());
+            //}
 
             Console.ReadLine();
         }
 
+        private static bool SimilarCharacter(string fWord, string sWord)
+        {
+            //Check length
+            if (fWord.Length != sWord.Length)
+                return false;
+            // Check if number of occurence is equal in each word 
+            
+            //Check amount of repeated word for each are equal 
+            //Check if each word in 1 is in 2
+
+            return false;
+        }
+
+        private static object CheckNumberOfOcurrence(string fWord, char character)
+        {
+            throw new NotImplementedException();
+        }
         private static decimal GenerateParkingCharge(int hour)
         {
             decimal charge = 0M;
