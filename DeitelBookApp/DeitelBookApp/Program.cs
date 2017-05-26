@@ -11,16 +11,25 @@ namespace DeitelBookApp
     {
         static void Main(string[] args)
         {
+            HackerRank30Days.D2Operators();
+            
+
+            Console.ReadLine();
+        }
+
+        private static void ReadAndWriteFile()
+        {
             // read file
 
             // If add number if not in loop 
             string path = @"C:\Users\James Leveille\Documents\GitHub\Practice\DeitelBookApp\numTransID.txt";
             string newPath = @"C:\Users\James Leveille\Documents\GitHub\Practice\DeitelBookApp\NEW.txt";
 
-            if(File.Exists(newPath))
+            if (File.Exists(newPath))
                 File.Delete(newPath);
 
-            if(!File.Exists(newPath)){
+            if (!File.Exists(newPath))
+            {
                 File.Create(newPath);
             }
 
@@ -50,21 +59,32 @@ namespace DeitelBookApp
             //{
             //    sWriter.Write(sb.ToString());
             //}
-
-            Console.ReadLine();
         }
 
-        private static bool SimilarCharacter(string fWord, string sWord)
+        private static bool SimilarCharacterWords(string fWord, string sWord)
         {
-            //Check length
             if (fWord.Length != sWord.Length)
                 return false;
-            // Check if number of occurence is equal in each word 
-            
-            //Check amount of repeated word for each are equal 
-            //Check if each word in 1 is in 2
+            List<int> indexFound = new List<int>();
+            foreach (var item in fWord)
+            {
+                bool isCharFound = false;
+                for (int i = 0; i < sWord.Length; i++)
+                {
+                    if (item == sWord[i] && !indexFound.Contains(i))
+                    {
+                        indexFound.Add(i);
+                        isCharFound = true;
+                        break;
+                    }
+                }
+                if (!isCharFound)
+                {
+                    return false;
+                }
+            }
 
-            return false;
+            return true;
         }
 
         private static object CheckNumberOfOcurrence(string fWord, char character)
