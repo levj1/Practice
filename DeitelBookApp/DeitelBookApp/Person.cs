@@ -8,16 +8,40 @@ namespace DeitelBookApp
 {
     class Person
     {
-        public string Name { get; set; }
-        public Account Account { get; set; }
+        public int Age { get; set; }
 
-        public Person(string name)
+        public Person(int initialAge)
         {
-            Name = name;
+            if (initialAge < 0)
+            {
+                Console.WriteLine("Age is not valid, setting age to 0.");
+            }
+            else
+            {
+                Age = initialAge;
+            }
         }
         public Person()
         {
+        }
 
+        public void amIOld()
+        {
+            if(Age < 13)
+            {
+                Console.WriteLine("You are young.");
+            }else if(Age >= 13 && Age < 18)
+            {
+                Console.WriteLine("You are a teenager.");
+            }else
+            {
+                Console.WriteLine("You are old.");
+            }
+        }
+
+        public void yearPasses()
+        {
+            Age++;
         }
     }
 }

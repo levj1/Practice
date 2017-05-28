@@ -11,9 +11,11 @@ namespace DeitelBookApp
     {
         static void Main(string[] args)
         {
-            string line = Console.ReadLine();
-            int i2 = Convert.ToInt32(line);
-            Console.WriteLine(i2.ToString());
+            HackerRank30Days.D4MigratoryBirds();
+
+
+            Console.ReadLine();
+            
         }
 
         static int maxDifference(int[] a)
