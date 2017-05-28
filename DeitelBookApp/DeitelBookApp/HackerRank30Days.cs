@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DeitelBookApp
 {
-    public static class HackerRank30Days
+    public static class HackerRank30DaysChallenge
     {
         public static void MigratoryBirds()
         {
@@ -85,10 +82,7 @@ namespace DeitelBookApp
             decimal tax = mealCost * (taxPercent / 100);
 
             decimal totalCost = mealCost + tip + tax;
-
             Console.WriteLine("The total meal cost is " + Math.Round(totalCost) + " dollars.");
-
-
         }
 
         public static void D1DataType()
@@ -100,10 +94,6 @@ namespace DeitelBookApp
             int i2 = 0;
             double d2 = 0.0;
             string s2 = "";
-            i2 = Convert.ToInt16(Console.ReadLine());
-            d2 = Convert.ToDouble(Console.ReadLine());
-            s2 = Console.ReadLine();
-
             Console.WriteLine(i + i2);
             Console.WriteLine((d + d2).ToString("0.0"));
             Console.WriteLine(s + s2);
