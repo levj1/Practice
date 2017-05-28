@@ -10,7 +10,7 @@ namespace CF.Tests
         public void TestPersonFullName()
         {
             // actual
-            Person person = new Person();
+            Parent person = new Parent();
             person.FirstName = "James";
             person.LastName = "Leveille";
             string actual = person.FullName;
@@ -26,7 +26,7 @@ namespace CF.Tests
         public void TestPersonWithEmptyFirstName()
         {
             // actual
-            Person person = new Person();
+            Parent person = new Parent();
             person.FirstName = "";
             person.LastName = "Leveille";
             string actual = person.FullName;
@@ -42,7 +42,7 @@ namespace CF.Tests
         public void TestPersonWithEmptyLastName()
         {
             // actual
-            Person person = new Person();
+            Parent person = new Parent();
             person.FirstName = "James";
             person.LastName = "";
             string actual = person.FullName;

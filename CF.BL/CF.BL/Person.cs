@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace CF.BL
 {
@@ -11,7 +7,7 @@ namespace CF.BL
         Male,
         Female
     }
-    public class Person
+    public abstract class Person
     {
         public int ID { get; private set; }
         public string FirstName { get; set; }
@@ -57,15 +53,13 @@ namespace CF.BL
 
     public class Parent: Person
     {
-        public List<Kid> Children { get; set; }
+        public List<Person> Children { get; set; }
         public Parent()
         {
-            Children = new List<Kid>();
+            Children = new List<Person>();
         }
     }
 
-   public class Kid: Person
-    {
-
-    }
+    public class Child : Person { }
+    public class Ancestor: Parent { }
 }

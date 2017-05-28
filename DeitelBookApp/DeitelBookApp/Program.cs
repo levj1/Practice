@@ -11,16 +11,38 @@ namespace DeitelBookApp
     {
         static void Main(string[] args)
         {
+            string line = Console.ReadLine();
+            int i2 = Convert.ToInt32(line);
+            Console.WriteLine(i2.ToString());
+        }
+
+        static int maxDifference(int[] a)
+        {
+            int max = a[1] - a[0];
+            for (int i = 0; i < a.Length; i++)
+            {
+                for(int j = i + 1; j < a.Length; j++)
+                {
+                    if (a[j] - a[i] > max)
+                        max = a[j] - a[i];
+                }
+            }
+            return max;
+        }
+
+        private static void FileTest()
+        {
             // read file
 
             // If add number if not in loop 
             string path = @"C:\Users\James Leveille\Documents\GitHub\Practice\DeitelBookApp\numTransID.txt";
             string newPath = @"C:\Users\James Leveille\Documents\GitHub\Practice\DeitelBookApp\NEW.txt";
 
-            if(File.Exists(newPath))
+            if (File.Exists(newPath))
                 File.Delete(newPath);
 
-            if(!File.Exists(newPath)){
+            if (!File.Exists(newPath))
+            {
                 File.Create(newPath);
             }
 
@@ -50,8 +72,6 @@ namespace DeitelBookApp
             //{
             //    sWriter.Write(sb.ToString());
             //}
-
-            Console.ReadLine();
         }
 
         private static bool SimilarCharacter(string fWord, string sWord)
