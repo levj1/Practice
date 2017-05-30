@@ -11,6 +11,8 @@ namespace DeitelBookApp
     {
         static void Main(string[] args)
         {
+            HackerRank30DaysChallenge.D6Review();
+
             Console.ReadLine();
         }
 

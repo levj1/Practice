@@ -5,45 +5,50 @@ namespace DeitelBookApp
 {
     public static class HackerRank30DaysChallenge
     {
-        public static void MigratoryBirds()
+
+
+
+        public static void D6Review()
         {
-            int n = Convert.ToInt32(Console.ReadLine());
-            string[] types_temp = Console.ReadLine().Split(' ');
-            int[] types = Array.ConvertAll(types_temp, Int32.Parse);
-
-            int countType1 = 0;
-            int countType2 = 0;
-            int countType3 = 0;
-            int countType4 = 0;
-            int countType5 = 0;
-            for (int i = 0; i < types.Length; i++)
-            {
-                foreach (var numb2 in types)
-                {
-                    if(types[i] == numb2)
-                    {
-                        if (i == 0) countType1++;
-                        if (i == 1) countType2++;
-                        if (i == 2) countType3++;
-                        if (i == 3) countType4++;
-                        if (i == 4) countType5++;
-                    }
-                }
-            }
-
-            int[] typeCount = new int[] { countType1, countType2, countType3, countType4, countType5};
             int count = 0;
-            foreach (var item in typeCount)
+            int numberOfTestCase = Convert.ToInt32(Console.ReadLine());
+            while (count < numberOfTestCase)
             {
-                if (item == typeCount.Max())
-                {
-                    Console.Write($"{types[count]}");
-                    break;
-                }
+                string line = Console.ReadLine();
+                PrintChar(line, true);
+                Console.Write(" ");
+                PrintChar(line, false);
+
+                Console.WriteLine();
                 count++;
             }
-            
+
         }
+
+        private static void PrintChar(string word, bool isEven)
+        {
+            for (int i = 0; i < word.Length; i++)
+            {
+                if (i % 2 == 0 && isEven)
+                {
+                    Console.Write(word[i]);
+                }
+                else if (i % 2 != 0 && !isEven)
+                {
+                    Console.Write(word[i]);
+                }
+            }
+        }
+
+        public static void D5Loops()
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            for (int i = 1; i <= 10; i++)
+            {
+                Console.WriteLine($"{n} x {i} = {n * i}");
+            }
+        }
+        
         public static void D3ConditionalStatement()
         {
             int n;
@@ -97,6 +102,86 @@ namespace DeitelBookApp
             Console.WriteLine(i + i2);
             Console.WriteLine((d + d2).ToString("0.0"));
             Console.WriteLine(s + s2);
+        }
+
+        public static void CrosswordPuzzle()
+        {
+            /*  +-++++++++
+                +-++++++++
+                +-------++
+                +-++++++++
+                +-++++++++
+                +------+++
+                +-+++-++++
+                +++++-++++
+                +++++-++++
+                ++++++++++
+            */
+
+            char[,] plusMinusArr = new char[10, 10];
+            int col = 0;
+            while (col < 10)
+            {
+                char[] valueEnter = Console.ReadLine().ToArray();
+                for (int i = 0; i < valueEnter.Length; i++)
+                {
+                    plusMinusArr[col, i] = valueEnter[i];
+                }
+                col++;
+            };
+
+            string[] wordsEntered = Console.ReadLine().Split(';');
+
+            Console.WriteLine("You entered: ");
+            int numberOfRows = plusMinusArr.GetLength(0);
+            int numberOfCols = plusMinusArr.GetLength(1);
+            for (int i = 0; i < numberOfRows; i++)
+            {
+                for (int x = 0; x < numberOfCols; x++)
+                {
+                    Console.Write(plusMinusArr[i, x].ToString());
+                }
+                Console.WriteLine();
+            }
+        }
+        public static void MigratoryBirds()
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            string[] types_temp = Console.ReadLine().Split(' ');
+            int[] types = Array.ConvertAll(types_temp, Int32.Parse);
+
+            int countType1 = 0;
+            int countType2 = 0;
+            int countType3 = 0;
+            int countType4 = 0;
+            int countType5 = 0;
+            for (int i = 0; i < types.Length; i++)
+            {
+                foreach (var numb2 in types)
+                {
+                    if (types[i] == numb2)
+                    {
+                        if (i == 0) countType1++;
+                        if (i == 1) countType2++;
+                        if (i == 2) countType3++;
+                        if (i == 3) countType4++;
+                        if (i == 4) countType5++;
+                    }
+                }
+            }
+
+            int[] typeCount = new int[] { countType1, countType2, countType3, countType4, countType5 };
+            int count = 0;
+            foreach (var item in typeCount)
+            {
+                if (item == typeCount.Max())
+                {
+                    Console.Write($"{types[count]}");
+                    break;
+                }
+                count++;
+            }
+
         }
     }
 }
