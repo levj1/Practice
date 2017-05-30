@@ -7,7 +7,17 @@ namespace DeitelBookApp
     {
 
 
+        public static void D7Array(){
+            int n = Convert.ToInt32(Console.ReadLine());
+            string[] arr_temp = Console.ReadLine().Split(' ');
+            int[] arr = Array.ConvertAll(arr_temp, Int32.Parse);
 
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.Write(arr[arr.Length - 1 - i]);
+                Console.Write(" ");
+            }
+        }
         public static void D6Review()
         {
             int count = 0;
@@ -45,7 +55,7 @@ namespace DeitelBookApp
             int n = Convert.ToInt32(Console.ReadLine());
             for (int i = 1; i <= 10; i++)
             {
-                Console.WriteLine($"{n} x {i} = {n * i}");
+                //Console.WriteLine($"{n} x {i} = {n * i}");
             }
         }
         
@@ -176,7 +186,7 @@ namespace DeitelBookApp
             {
                 if (item == typeCount.Max())
                 {
-                    Console.Write($"{types[count]}");
+                    //Console.Write($"{types[count]}");
                     break;
                 }
                 count++;
