@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DeitelBookApp
@@ -6,6 +7,37 @@ namespace DeitelBookApp
     public static class HackerRank30DaysChallenge
     {
 
+        public static void D8Dictionary()
+        {
+            int numbOfEntries = Convert.ToInt32(Console.ReadLine());
+            // Create Dictionary to hold name and number
+            Dictionary<string, string> phoneBook = new Dictionary<string, string>();
+            for (int i = 0; i < numbOfEntries; i++)
+            {
+                string[] line = Console.ReadLine().Split(' ');
+                phoneBook.Add(line[0], line[1]);
+            }
+
+            bool found = true;
+            while (found)
+            {
+                string search = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(search))
+                {
+                    found = false;
+                    break;
+                }
+                
+                    if (phoneBook.ContainsKey(search))
+                    {
+                        Console.WriteLine(search + "=" + phoneBook[search]);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Not Found");
+                    }
+            }
+        }
 
         public static void D7Array(){
             int n = Convert.ToInt32(Console.ReadLine());

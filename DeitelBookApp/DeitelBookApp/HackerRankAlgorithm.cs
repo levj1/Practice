@@ -8,6 +8,39 @@ namespace DeitelBookApp
 {
     public static class HackerRankAlgorithm
     {
+        public static void PlusMinus()
+        {
+            int number = Convert.ToInt32(Console.ReadLine());
+            string[] line = Console.ReadLine().Split(' ');
+
+            double numPos = 0;
+            double numNeg = 0;
+            double numNeut = 0;
+
+            for (int i = 0; i < number; i++)
+            {
+                double numbEntered = Convert.ToDouble(line[i]);
+
+                if (numbEntered > 0)
+                {
+                    numPos++;
+                }
+                else if (numbEntered == 0)
+                {
+                    numNeg++;
+                }
+                else
+                {
+                    numNeut++;
+                }
+            }
+
+            Console.WriteLine(Math.Round(numPos / number, 6).ToString("0.000000"));
+            Console.WriteLine(Math.Round(numNeg / number, 6).ToString("0.000000"));
+            Console.WriteLine(Math.Round(numNeut / number, 6).ToString("0.000000"));
+        }
+
+           
         public static void DiagonalDifference()
         {
             int squareValue = Convert.ToInt32(Console.ReadLine());
@@ -52,6 +85,8 @@ namespace DeitelBookApp
             Console.WriteLine(Math.Abs(sum1 - sum2));
             
         }
+
+
         public static void CompareTheTriplets()
         {
             string[] tokens_a0 = Console.ReadLine().Split(' ');

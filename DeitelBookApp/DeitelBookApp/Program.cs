@@ -11,7 +11,7 @@ namespace DeitelBookApp
     {
         static void Main(string[] args)
         {
-            HackerRankAlgorithm.DiagonalDifference();
+            HackerRankAlgorithm.PlusMinus();
 
             Console.ReadLine();
         }
