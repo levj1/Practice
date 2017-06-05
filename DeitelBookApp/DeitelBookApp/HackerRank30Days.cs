@@ -6,6 +6,22 @@ namespace DeitelBookApp
 {
     public static class HackerRank30DaysChallenge
     {
+        public static void D12Inheritance()
+        {
+            string[] firstLine = Console.ReadLine().Split(' ');
+            Student student = new Student(firstLine[0], firstLine[1], Convert.ToInt64(firstLine[2]), 80);
+
+            int arrLength = Convert.ToInt32(Console.ReadLine());
+            string[] arrValue = Console.ReadLine().Split(' ');
+            student.Score = new int[arrLength];
+            for (int i = 0; i < arrLength; i++)
+            {
+                student.Score[i] = Convert.ToInt32(arrValue[i]);
+            }
+
+            student.PrintPerson();
+            student.PrintGradeLetter();
+        }
 
         public static void D8Dictionary()
         {

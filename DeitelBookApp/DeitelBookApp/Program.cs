@@ -11,6 +11,9 @@ namespace DeitelBookApp
     {
         static void Main(string[] args)
         {
+            HackerRank30DaysChallenge.D12Inheritance();
+
+
             DateTime date = Convert.ToDateTime("05/31/2017");
             date = date.AddYears(-1).AddDays(1);
             string s;
