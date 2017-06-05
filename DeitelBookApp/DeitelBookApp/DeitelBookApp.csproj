@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
+    <Compile Include="DataStructures.cs" />
     <Compile Include="HackerRank30Days.cs" />
     <Compile Include="HackerRankAlgorithm.cs" />
     <Compile Include="Person.cs" />
@@ -52,6 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CF.BL\Common\Common.csproj">
+      <Project>{9255a2af-3e44-4077-9eac-2d96c71d2c19}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

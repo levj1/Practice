@@ -8,6 +8,26 @@ namespace DeitelBookApp
 {
     public static class HackerRankAlgorithm
     {
+        public static void StairCase()
+        {
+            int numbStairs = Convert.ToInt32(Console.ReadLine());
+
+            for (int i = 1; i <= numbStairs; i++)
+            {
+                PrintCharacterXTimes(numbStairs - i, ' ');
+                PrintCharacterXTimes(i, '*');
+                Console.WriteLine();
+            }
+        }
+        private static void PrintCharacterXTimes(int max, char aChar)
+        {
+            int i = 1;
+            while (i <= max)
+            {
+                Console.Write(aChar);
+                i++;
+            }
+        }
         public static void PlusMinus()
         {
             int number = Convert.ToInt32(Console.ReadLine());

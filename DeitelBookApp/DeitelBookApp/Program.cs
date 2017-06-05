@@ -11,7 +11,23 @@ namespace DeitelBookApp
     {
         static void Main(string[] args)
         {
-            HackerRankAlgorithm.PlusMinus();
+            DateTime date = Convert.ToDateTime("05/31/2017");
+            date = date.AddYears(-1).AddDays(1);
+            string s;
+
+            int squareArrSize = Convert.ToInt32(Console.ReadLine());
+            int[,] sqArr = new int[squareArrSize, squareArrSize];
+
+            for (int i = 0; i < squareArrSize; i++)
+            {
+                string[] line = Console.ReadLine().Split(' ');
+                for (int j = 0; j < squareArrSize; j++)
+                {
+                    sqArr[i, j] = Convert.ToInt32(line[j]);
+                }
+            }
+
+            Console.WriteLine(DataStructures.HourGlass(sqArr));
 
             Console.ReadLine();
         }
