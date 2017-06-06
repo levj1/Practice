@@ -8,19 +8,21 @@ namespace DeitelBookApp
     {
         public static void D12Inheritance()
         {
-            string[] firstLine = Console.ReadLine().Split(' ');
-            Student student = new Student(firstLine[0], firstLine[1], Convert.ToInt64(firstLine[2]), 80);
-
-            int arrLength = Convert.ToInt32(Console.ReadLine());
-            string[] arrValue = Console.ReadLine().Split(' ');
-            student.Score = new int[arrLength];
-            for (int i = 0; i < arrLength; i++)
+            string[] inputs = Console.ReadLine().Split();
+            string firstName = inputs[0];
+            string lastName = inputs[1];
+            int id = Convert.ToInt32(inputs[2]);
+            int numScores = Convert.ToInt32(Console.ReadLine());
+            inputs = Console.ReadLine().Split();
+            int[] scores = new int[numScores];
+            for (int i = 0; i < numScores; i++)
             {
-                student.Score[i] = Convert.ToInt32(arrValue[i]);
+                scores[i] = Convert.ToInt32(inputs[i]);
             }
 
-            student.PrintPerson();
-            student.PrintGradeLetter();
+            Student s = new Student(firstName, lastName, id, scores);
+            s.PrintPerson();
+            Console.WriteLine("Grade: " + s.Calculate() + "\n");
         }
 
         public static void D8Dictionary()

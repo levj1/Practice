@@ -8,17 +8,19 @@ namespace DeitelBookApp
 {
     public class Student: Person
     {
-        public int[] Score;
-        public Student(string f, string l, long id, int[] test)
-            : base(f, l, id) { Score = test; }
-        
-        public char GetLetterGrade()
+        int[] TestScores;
+        public Student(string f, string l, int id, int[] scores)
+            : base(f, l, id)
+        {
+            TestScores = scores;
+        }
+        public char Calculate()
         {
             int sum = 0;
             int average = 0;
-            for (int i = 0; i < Score.Length; i++)
+            for (int i = 0; i < TestScores.Length; i++)
             {
-                sum += Score[i];
+                sum += TestScores[i];
                 average++;
             }
 
@@ -38,21 +40,16 @@ namespace DeitelBookApp
             }
             else if (grade < 70 && grade >= 55)
             {
-                return 'D';
+                return 'P';
             }
             else if (grade < 55 && grade >= 40)
             {
-                return 'P';
+                return 'D';
             }
             else
             {
                 return 'T';
             }
-        }
-
-        public void PrintGradeLetter()
-        {
-            Console.WriteLine("Grade: " + GetLetterGrade());
         }
     }
 }

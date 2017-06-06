@@ -8,6 +8,64 @@ namespace DeitelBookApp
 {
     public static class HackerRankAlgorithm
     {
+        public static void ConvertTime()
+        {
+            string line = Console.ReadLine();
+            DateTime time = Convert.ToDateTime(line);
+
+            Console.WriteLine(time.ToString("HH:mm:ss"));
+
+        }
+
+        public static void BirthdayCakeCandle()
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            string[] height_temp = Console.ReadLine().Split(' ');
+            int[] height = Array.ConvertAll(height_temp, Int32.Parse);
+
+            int max = height.Max();
+            int count = 0;
+            foreach (var hgt in height)
+            {
+                if (hgt == max)
+                    count++;
+            }
+
+            Console.WriteLine(count);
+        }
+
+        public static void MinMax()
+        {
+            string[] line = Console.ReadLine().Split(' ');
+            long[] numbers = new long[line.Length];
+
+            for (int i = 0; i < line.Length; i++)
+            {
+                numbers[i] = Convert.ToInt64(line[i]);
+            }
+
+            long min = int.MaxValue;
+            long max = 0;
+            long sum = 0;
+
+            List<long> listOfSum = new List<long>();
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                for (int j = 0; j < numbers.Length; j++)
+                {
+                    if (i != j)
+                    {
+                        sum += numbers[j];
+                    }
+                }
+                listOfSum.Add(sum);
+                sum = 0;
+            }
+            
+            Console.WriteLine(listOfSum.Min() + " " + listOfSum.Max());
+        }
+
         public static void StairCase()
         {
             int numbStairs = Convert.ToInt32(Console.ReadLine());
@@ -19,6 +77,7 @@ namespace DeitelBookApp
                 Console.WriteLine();
             }
         }
+
         private static void PrintCharacterXTimes(int max, char aChar)
         {
             int i = 1;
@@ -28,6 +87,7 @@ namespace DeitelBookApp
                 i++;
             }
         }
+
         public static void PlusMinus()
         {
             int number = Convert.ToInt32(Console.ReadLine());
@@ -59,7 +119,6 @@ namespace DeitelBookApp
             Console.WriteLine(Math.Round(numNeg / number, 6).ToString("0.000000"));
             Console.WriteLine(Math.Round(numNeut / number, 6).ToString("0.000000"));
         }
-
            
         public static void DiagonalDifference()
         {
@@ -105,7 +164,6 @@ namespace DeitelBookApp
             Console.WriteLine(Math.Abs(sum1 - sum2));
             
         }
-
 
         public static void CompareTheTriplets()
         {
