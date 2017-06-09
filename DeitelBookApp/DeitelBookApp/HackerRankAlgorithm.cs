@@ -8,6 +8,36 @@ namespace DeitelBookApp
 {
     public static class HackerRankAlgorithm
     {
+
+        public static int[] Solve(int[] grades)
+        {
+            int[] newGrades = new int[grades.Length];
+            for (int i = 0; i < grades.Length; i++)
+            {
+                if (grades[i] > 40)
+                {
+                    newGrades[i] = NextMultipleOf5(grades[i]);
+                }
+            }
+
+            return newGrades;
+        }
+
+        public static int NextMultipleOf5(int number)
+        {
+            bool found = false;
+            int nextOne = number;
+            while (!found)
+            {
+                nextOne++;
+                if (nextOne % 5 == 0)
+                {
+                    found = true;
+                }
+            }
+            return nextOne;
+        }
+
         public static void ConvertTime()
         {
             string line = Console.ReadLine();

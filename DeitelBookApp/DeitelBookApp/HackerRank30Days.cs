@@ -6,6 +6,35 @@ namespace DeitelBookApp
 {
     public static class HackerRank30DaysChallenge
     {
+
+        public static int D17CalculatePower(int n, int p)
+        {
+            if (n < 0 || p < 0)
+            {
+                throw new Exception("n and p should be non-negative");
+            }
+            else
+            {
+                return (int)Math.Pow(n, p);
+            }
+        }
+
+        public static void D16Exception()
+        {
+            string fromLine = Console.ReadLine();
+            int convertedValue;
+            try
+            {
+                convertedValue = Convert.ToInt32(fromLine);
+                Console.WriteLine(convertedValue);
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("Bad String");
+            }
+        }
+        
         public static void D12Inheritance()
         {
             string[] inputs = Console.ReadLine().Split();

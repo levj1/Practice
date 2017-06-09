@@ -11,8 +11,7 @@ namespace DeitelBookApp
     {
         static void Main(string[] args)
         {
-            HackerRankAlgorithm.ConvertTime();
-
+            HackerRank30DaysChallenge.D17CalculatePower(-3,-4);
 
             DateTime date = Convert.ToDateTime("05/31/2017");
             date = date.AddYears(-1).AddDays(1);
