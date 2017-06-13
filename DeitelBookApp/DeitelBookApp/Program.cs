@@ -11,25 +11,30 @@ namespace DeitelBookApp
     {
         static void Main(string[] args)
         {
-            HackerRank30DaysChallenge.D17CalculatePower(-3,-4);
+            int n = Convert.ToInt32(Console.ReadLine());
+            string[] a_temp = Console.ReadLine().Split(' ');
+            int[] a = Array.ConvertAll(a_temp, Int32.Parse);
 
-            DateTime date = Convert.ToDateTime("05/31/2017");
-            date = date.AddYears(-1).AddDays(1);
-            string s;
+            HackerRank30DaysChallenge.D20BubbleSort(a);
+            
 
-            int squareArrSize = Convert.ToInt32(Console.ReadLine());
-            int[,] sqArr = new int[squareArrSize, squareArrSize];
+            //DateTime date = Convert.ToDateTime("05/31/2017");
+            //date = date.AddYears(-1).AddDays(1);
+            //string s;
 
-            for (int i = 0; i < squareArrSize; i++)
-            {
-                string[] line = Console.ReadLine().Split(' ');
-                for (int j = 0; j < squareArrSize; j++)
-                {
-                    sqArr[i, j] = Convert.ToInt32(line[j]);
-                }
-            }
+            //int squareArrSize = Convert.ToInt32(Console.ReadLine());
+            //int[,] sqArr = new int[squareArrSize, squareArrSize];
 
-            Console.WriteLine(DataStructures.HourGlass(sqArr));
+            //for (int i = 0; i < squareArrSize; i++)
+            //{
+            //    string[] line = Console.ReadLine().Split(' ');
+            //    for (int j = 0; j < squareArrSize; j++)
+            //    {
+            //        sqArr[i, j] = Convert.ToInt32(line[j]);
+            //    }
+            //}
+
+            //Console.WriteLine(DataStructures.HourGlass(sqArr));
 
             Console.ReadLine();
         }

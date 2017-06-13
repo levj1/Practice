@@ -7,6 +7,81 @@ namespace DeitelBookApp
     public static class HackerRank30DaysChallenge
     {
 
+        public static void D20BubbleSort()
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            string[] a_temp = Console.ReadLine().Split(' ');
+            int[] array = Array.ConvertAll(a_temp, Int32.Parse);
+
+            int swapCount = 0;
+            for (int i = 0; i < n; i++)
+            {
+                // Track number of elements swapped during a single array traversal
+                int numberOfSwaps = 0;
+
+                for (int j = 0; j < n - 1; j++)
+                {
+                    // Swap adjacent elements if they are in decreasing order
+                    if (array[j] > array[j + 1])
+                    {
+                        //swap(array[j], array[j + 1]);
+                        if(array[j+1] < array[j])
+                        {
+                            int temp = array[j];
+                            array[j] = array[j + 1];
+                            array[j + 1] = temp;
+                            swapCount++;
+                        }
+                        numberOfSwaps++;
+                    }
+                }
+
+                // If no elements were swapped during a traversal, array is sorted
+                if (numberOfSwaps == 0)
+                {   
+                    break;
+                }
+            }
+
+            Console.WriteLine("Array is sorted in {0} swaps", swapCount);
+            Console.WriteLine("First Element: {0}", array.First());
+            Console.WriteLine("Last Element: {0}", array.Last());
+        }
+
+        
+
+        public static int D19DivisorSum(int number)
+        {
+            int sum = 0;
+            for (int i = 1; i <= number; i++)
+            {
+                if(number % i == 0)
+                {
+                    sum += i;
+                }
+            }
+            return sum;
+        }
+
+        public static bool D18IsPalindrome(string word)
+        {
+            Stack<char> stack = new Stack<char>();
+            Queue<char> queue = new Queue<char>();
+            for (int i = 0; i < word.Length; i++)
+            {
+                stack.Push(word[i]);
+                queue.Enqueue(word[i]);
+            }
+
+            for (int i = 0; i < word.Length; i++)
+            {
+                if(stack.Pop() != queue.Dequeue())
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         public static int D17CalculatePower(int n, int p)
         {
             if (n < 0 || p < 0)
