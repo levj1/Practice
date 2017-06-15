@@ -11,9 +11,14 @@ namespace DeitelBookApp
     {
         static void Main(string[] args)
         {
-
-            HackerRank30DaysChallenge.D21Generics();
-            
+            int n = Convert.ToInt32(Console.ReadLine());
+            int[] grades = new int[n];
+            for (int grades_i = 0; grades_i < n; grades_i++)
+            {
+                grades[grades_i] = Convert.ToInt32(Console.ReadLine());
+            }
+            int[] result = HackerRankAlgorithm.Solve(grades);
+            Console.WriteLine(String.Join("\n", result));
 
             //DateTime date = Convert.ToDateTime("05/31/2017");
             //date = date.AddYears(-1).AddDays(1);

@@ -14,9 +14,20 @@ namespace DeitelBookApp
             int[] newGrades = new int[grades.Length];
             for (int i = 0; i < grades.Length; i++)
             {
-                if (grades[i] > 40)
+                if (grades[i] > 37)
                 {
-                    newGrades[i] = NextMultipleOf5(grades[i]);
+                    int nextMultiple = NextMultipleOf5(grades[i]);
+                    if((nextMultiple - grades[i]) < 3){
+                        newGrades[i] = nextMultiple;
+                    }
+                    else
+                    {
+                        newGrades[i] = grades[i];
+                    }
+                }
+                else
+                {
+                    newGrades[i] = grades[i];
                 }
             }
 
