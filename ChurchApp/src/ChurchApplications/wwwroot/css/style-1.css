@@ -1,0 +1,16 @@
+﻿body{
+    font-family: sans-serif;
+}
+
+#side{
+    float: left;
+    display: inline;
+    background-color: aliceblue;
+    border: dashed 1px;
+    position: fixed;
+}
+
+#wrapper{
+    background-color: azure;
+    border: solid 1px;
+}
