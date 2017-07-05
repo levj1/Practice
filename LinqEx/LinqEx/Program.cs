@@ -10,6 +10,27 @@ namespace LinqEx
     {
         static void Main(string[] args)
         {
+            Person Paul = new Person("Paul");
+            Person James = new Person("James");
+
+            List<Donation> allDons = new List<Donation>
+            {
+                new Donation(1, 12.3M, DateTime.Now.AddMonths(-12), DonationType.Offering, Paul),
+                new Donation(2, 125.00M, DateTime.Now.AddMonths(-12), DonationType.Tithe, Paul),
+                new Donation(3, 10.00M, DateTime.Now.AddMonths(-10), DonationType.Offering, James),
+                new Donation(4, 220, DateTime.Now.AddMonths(-10), DonationType.Tithe, James)
+            };
+            Console.ReadLine();
+        }
+
+
+
+
+
+
+
+        private static void LinqPractice2()
+        {
             string[] presidents = {
                 "Adams", "Arthur", "Buchanan", "Bush", "Carter", "Cleveland",
                 "Clinton", "Coolidge", "Eisenhower", "Fillmore", "Ford", "Garfield",
@@ -30,8 +51,6 @@ namespace LinqEx
             {
                 Console.WriteLine(pres);
             }
-
-            Console.ReadLine();
         }
 
         private static void LinqSimpleQuery()
