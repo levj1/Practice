@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div>
+    <ul>
+        <li>@Html.ActionLink("Grid", "Grid", "Home")</li>
+        <li>@Html.ActionLink("Jumbotron", "Jumbotron", "Home")</li>
+        <li>@Html.ActionLink("Navbar", "Navbar", "Home")</li>
+        <li>@Html.ActionLink("Carousel", "Carousel", "Home")</li>
+        <li>@Html.ActionLink("Blog", "Blog", "Home")</li>
+        <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
+        <li>@Html.ActionLink("Signin", "Signin", "Home")</li>
+        <li>@Html.ActionLink("footnotes", "footnotes", "Home")</li>
+        <li>@Html.ActionLink("Canvas", "Canvas", "Home")</li>
+    </ul>
+    @Html.Partial("_LoginPartial")
+</div>

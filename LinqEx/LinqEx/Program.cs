@@ -6,48 +6,37 @@ using System.Threading.Tasks;
 
 namespace LinqEx
 {
+    class TestP
+    {
+        public string FName { get; set; }
+        public string LName { get; set; }
+    }
     class Program
     {
         static void Main(string[] args)
         {
-            Person Paul = new Person("Paul");
-            Person James = new Person("James");
+            LinqPractice2();
 
-            List<Donation> allDons = new List<Donation>
-            {
-                new Donation(1, 12.3M, DateTime.Now.AddMonths(-12), DonationType.Offering, Paul),
-                new Donation(2, 125.00M, DateTime.Now.AddMonths(-12), DonationType.Tithe, Paul),
-                new Donation(3, 10.00M, DateTime.Now.AddMonths(-10), DonationType.Offering, James),
-                new Donation(4, 220, DateTime.Now.AddMonths(-10), DonationType.Tithe, James)
-            };
             Console.ReadLine();
         }
-
-
-
-
-
-
+        
 
         private static void LinqPractice2()
         {
-            string[] presidents = {
-                "Adams", "Arthur", "Buchanan", "Bush", "Carter", "Cleveland",
-                "Clinton", "Coolidge", "Eisenhower", "Fillmore", "Ford", "Garfield",
-                "Grant", "Harding", "Harrison", "Hayes", "Hoover", "Jackson",
-                "Jefferson", "Johnson", "Kennedy", "Lincoln", "Madison", "McKinley",
-                "Monroe", "Nixon", "Obama", "Pierce", "Polk", "Reagan", "Roosevelt",
-                "Taft", "Taylor", "Truman", "Tyler", "Van Buren", "Washington", "Wilson"
+            TestP[] presidents = {
+                new TestP {FName = "Adam", LName = "Test" },
+                new TestP {FName = "Peace", LName = "Test1" },
+                new TestP {FName = "Eff", LName = "Test" },
             };
 
-            var aPresidents = presidents.Where(p => p.StartsWith("A")).ToList();
-            var lengthFive = presidents.Where(p => p.Length < 5).ToList();
-            var orderAsc = presidents.OrderBy(x => x).ToList();
-            var descPres = from p in presidents
-                           orderby p descending
-                           select p;
+            var aPresidents = (
+                                from p in presidents
+                                group p by p into newGroup
+                                select newGroup
+                                ).ToList();
 
-            foreach (var pres in descPres)
+
+            foreach (var pres in aPresidents)
             {
                 Console.WriteLine(pres);
             }
