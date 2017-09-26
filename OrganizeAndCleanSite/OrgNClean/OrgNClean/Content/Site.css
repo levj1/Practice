@@ -6,7 +6,7 @@
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
-    padding-right: 15px;
+    padding-right: 15px;    
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -21,4 +21,14 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.navbar{
+    background-color: #1b8959;
+}
+
+.footer {
+    padding: 60px 0 20px;
+    background: #1b8959;
+    color: #faeca1;
 }
