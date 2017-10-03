@@ -22,13 +22,3 @@ select,
 textarea {
     max-width: 280px;
 }
-
-.navbar{
-    background-color: #1b8959;
-}
-
-.footer {
-    padding: 60px 0 20px;
-    background: #1b8959;
-    color: #faeca1;
-}

@@ -2,16 +2,82 @@
     ViewBag.Title = "Home Page";
 }
 
-<div>
-    <ul>
-        <li>@Html.ActionLink("Grid", "Grid", "Home")</li>
-        <li>@Html.ActionLink("Jumbotron", "Jumbotron", "Home")</li>
-        <li>@Html.ActionLink("Navbar", "Navbar", "Home")</li>
-        <li>@Html.ActionLink("Carousel", "Carousel", "Home")</li>
-        <li>@Html.ActionLink("Blog", "Blog", "Home")</li>
-        <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
-        <li>@Html.ActionLink("Signin", "Signin", "Home")</li>
-        <li>@Html.ActionLink("footnotes", "footnotes", "Home")</li>
-        <li>@Html.ActionLink("Canvas", "Canvas", "Home")</li>
-    </ul>
+<div class="page-header">
+    <h1>Bootstrap grid examples</h1>
+    <p class="lead">Basic grid layouts</p>
+</div>
+
+
+<h3>Three equal columns</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <img class="card-img-top" src="~/Content/card-image1.jfif" alt="Card image cap">
+            <div class="card-body">
+                <p class="card-text">Some quick example text .</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <img class="card-img-top" src="~/Content/card-image1.jfif" alt="Card image cap">
+            <div class="card-body">
+                <p class="card-text">Some quick example text</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card" style="width: 20rem;">
+            <img class="card-img-top" src="http://rednow.in.th/wp-content/uploads/2015/08/banenr-318x180.png" alt="Card image cap">
+            <div class="card-block">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card" style="width: 20rem;">
+            <img class="card-img-top" src="http://rednow.in.th/wp-content/uploads/2015/08/banenr-318x180.png" alt="Card image cap">
+            <div class="card-block">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3>Three unequal columns</h3>
+<div class="row">
+    <div class="col-md-3">col-md-3</div>
+    <div class="col-md-6">col-md-3</div>
+    <div class="col-md-3">col-md-3</div>
+</div>
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>Jumbotron</h1>
+        <p>Jumbotron text</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h1>Header 1</h1>
+            <p>paragraph 1</p>
+        </div>
+        <div class="col-md-4">
+            <h1>Header 2</h1>
+            <p>paragraph 2</p>
+        </div>
+        <div class="col-md-4">
+            <h1>Header 3</h1>
+            <p>paragraph 3</p>
+        </div>
+    </div>
 </div>
