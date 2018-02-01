@@ -46,6 +46,7 @@ namespace Knockout_Fundamentals.Controllers
 
             CustomerViewModel customerViewModel = new CustomerViewModel();
             customerViewModel.Id = customer.Id;
+            customerViewModel.Name = customer.Name;
             customerViewModel.Age = customer.Age;
             customerViewModel.Comments = customer.Comments;
             customerViewModel.MessageToClient = "I Originated from the viewmodel";
